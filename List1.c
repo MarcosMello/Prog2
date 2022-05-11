@@ -46,7 +46,7 @@ void e5(){
     printf("Insira as duas notas separadas por um espaco: ");
     scanf("%f %f", &n1, &n2);
 
-    printf("Media: %.3f", ((n1 * 3) + (n2 * 7) / 10.0));
+    printf("Media: %.3f", (((n1 * 3) + (n2 * 7)) / 10.0));
 }
 
 void e6(){
