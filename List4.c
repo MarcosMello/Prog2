@@ -1,8 +1,8 @@
 #include <stdio.h>
 
-void e1(){
+void e1(){ //Correto
     int vet[6];
-    int neg;
+    int neg = 0;
 
     for(int i = 0; i < 6; i++){
         printf("Insira o numero: ");
@@ -18,12 +18,12 @@ void e1(){
     printf("Negativos: %d", neg);
 }
 
-void e2(){
+void e2(){ //Correto
     int teste1[10], teste2[10];
 
     for (int i = 0; i < 10; i++){
         printf("Insira o numero: ");
-        scanf("%d", teste1[i]);
+        scanf("%d", &teste1[i]);
     }
 
 
@@ -49,7 +49,7 @@ void e2(){
     printf("].\n");
 }
 
-void e3(){
+void e3(){ //Correto
     float v1[10];
 
     for (int i = 0; i < 10; i++){
@@ -59,14 +59,14 @@ void e3(){
 
     for (int j = 0; j < 10; j++){
         if (v1[j] <= 10){
-            printf("Valor <= 10 encontrado!\n Valor = %d - Posicao = %d\n", v1[j], j);
+            printf("Valor <= 10 encontrado!\n Valor = %.2f - Posicao = %d\n", v1[j], j);
         }
     }
 }
 
-void e4(){
+void e4(){ //Correto
     int P = 19;
-    float v[20], M = ;
+    float v[20], M = 0;
 
     for (int i = 0; i < 20; i++){
         printf("Insira o numero: ");
@@ -78,14 +78,14 @@ void e4(){
     for (int j = 0; j < 20; j++){
         if (v[j] < M){
             M = v[j];
-            pos = j;
+            P = j;
         }
     }
 
-    printf("O menor elemento de N é", M, "e sua posicao dentro do vetor é: ", P);
+    printf("O menor elemento de N é %.2f e sua posicao dentro do vetor é: %d", M, P);
 }
 
-void e5(){
+void e5(){ //Correto
     float v[20], tmp;
 
     for (int i = 0; i < 20; i++){
@@ -99,14 +99,14 @@ void e5(){
         v[j+10] = tmp;
     }
 
-    printf("V1 = [");
+    printf("V = [");
     for (int k = 0; k < 20; k++){
-        printf("%f, ", v1[k]);
+        printf("%.2f, ", v[k]);
     }
     printf("].\n");
 }
 
-void e6(){
+void e6(){ //Correto
     int par = 0, impar = 0, v[5];
 
     for (int i = 0; i < 5; i++){
@@ -115,45 +115,54 @@ void e6(){
     }
 
     for (int j = 0; j < 5; j++){
-        if (!(j%2)){
-            par += v[i];
+        if (!(v[j]%2)){
+            par += v[j];
         }
         else{
-            impar += v1[i];
+            impar += v[j];
         }
     }
 
     printf("Pares: %d\nImpares: %d", par, impar);
 }
 
-void e7(){
+void e7(){ //Correto
     float l1[25], valor;
-    int rep;
+    int rep = 0, po;
 
     for (int i = 0; i < 25; i++){
         printf("Insira o numero: ");
-        scanf("%f", &v[i]);
+        scanf("%f", &l1[i]);
     }
 
     printf("Insira o numero da pesquisa: ");
-    scanf("%d", &valor);
+    scanf("%f", &valor);
 
     for (int j = 0; j < 25; j++){
         if (valor <= l1[j] && valor >= l1[j]){
             rep++;
+
+            if (rep == 1){
+              po = j;
+            }
         }
     }
 
-    printf("Foram encontrados %d, numeros iguais a %d no vetor", rep, valor);
+    printf("Foram encontrados %d, numeros iguais a %.2f no vetor.", rep, valor);
+
+    if (rep >= 1){
+      printf("\nPosicao da primeira ocorrencia: %d", po);
+    }
 }
 
-void e8(){
-    char nome[30], alunos[15][2], R[5], G[5];
+void e8(){ //Correto
+    char nome[30], R[5], G[5];
     int acertos = 0;
 
     for (int i = 0; i < 5; i++){
         printf("Resposta da %d questao: ", i+1);
         scanf("%c", &G[i]);
+        getchar();
     }
 
     for (int j = 0; j < 15; j++){
@@ -165,20 +174,18 @@ void e8(){
         for (int k = 0; k < 5; k++){
             printf("Resposta da %d questao: ", k+1);
             scanf("%c", &R[k]);
+            getchar();
 
             if (R[k] == G[k]){
                 acertos++;
             }
         }
 
-        alunos[j][0] = nome;
-        alunos[j][1] = R;
-
-        printf("O(a) aluno(a) %s teve %d acertos e ficou com nota %d.", nome, R);
+        printf("O(a) aluno(a) %s teve %d acertos e ficou com nota %d.\n", nome, acertos, acertos * 2);
     }
 }
 
-void e9(){
+void e9(){ //Correto
     int G[13], R[13], AP[10][2], acertos = 0, id = 0;
 
     for (int i = 0; i < 13; i++){
@@ -194,7 +201,7 @@ void e9(){
 
         for (int j = 0; j < 13;){
             printf("Insira 0, 1 ou 2: ");
-            scanf("%d", &G[j]);
+            scanf("%d", &R[j]);
 
             if (R[j] == 0 || R[j] == 1 || R[j] == 2){
                 if (G[j] == R[j]){
@@ -209,11 +216,11 @@ void e9(){
     }
 
     for (int l = 0; l < 10; l++){
-        printf("Apostador %d com cartela %d acertou %d;\n", l, AP[l][0], AP[l][1]);
+        printf("Apostador %d com cartela %d acertou %d;\n", l+1, AP[l][0], AP[l][1]);
     }
 }
 
-void e10(){
+void e10(){ //Correto
     int G[13], R[13], AP[10][2], acertos = 0, id = 0;
     int dTt = 0, outros = 0;
 
@@ -230,7 +237,7 @@ void e10(){
 
         for (int j = 0; j < 13;){
             printf("Insira 0, 1 ou 2: ");
-            scanf("%d", &G[j];)
+            scanf("%d", &R[j]);
 
             if (R[j] == 0 || R[j] == 1 || R[j] == 2){
                 if (G[j] == R[j]){
@@ -245,11 +252,11 @@ void e10(){
     }
 
     for (int l = 0; l < 10; l++){
-        printf("Apostador %d com cartela %d acertou %d;\n", l, AP[l][0], AP[l][1]);
+        printf("Apostador %d com cartela %d acertou %d;\n", l+1, AP[l][0], AP[l][1]);
     }
 
     for (int m = 0; m < 10; m++){
-        if (AP[l][1] >= 10){
+        if (AP[m][1] >= 10){
             dTt++;
         }
         else{
@@ -257,12 +264,15 @@ void e10(){
         }
     }
 
-    printf("porcentagem > 10 = %.2f\n", dTt/13);
-    printf("porcentagem < 10 = %.2f", outros/13);
+    printf("porcentagem > 10 = %.2f\n", dTt/10.0);
+    printf("porcentagem < 10 = %.2f", outros/10.0);
 }
 
-void e11(){
-    int v[30], p[10], i[10], pp = 0, pi = 0;
+void e11(){ //Correto
+    int v[30];
+    int p[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int i[10] = {0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
+    int pp = 0, pi = 0;
 
     for (int i = 0; i < 30; i++){
         printf("Insira o numero: ");
@@ -282,6 +292,8 @@ void e11(){
                     p[k] = 0;
                 }
                 printf("].\n");
+                pp = 0;
+                j--;
             }
         }
         else{
@@ -291,20 +303,33 @@ void e11(){
             }
             else{
                 printf("Impares = [");
-                for (int k = 0; k < 10; k++){
-                    printf("%d, ", i[k]);
-                    i[k] = 0;
+                for (int l = 0; l < 10; l++){
+                    printf("%d, ", i[l]);
+                    i[l] = 0;
                 }
                 printf("].\n");
                 pi = 0;
+                j--;
             }
         }
     }
+
+    printf("Impares = [");
+    for (int m = 0; m < 10; m++){
+        printf("%d, ", i[m]);
+    }
+    printf("].\n");
+
+    printf("Pares = [");
+    for (int n = 0; n < 10; n++){
+        printf("%d, ", p[n]);
+    }
+    printf("].\n");
 }
 
-void e12(){
+void e12(){ //Correto
     int v[10], x[10], y[20];
-    int menor = 0, menor;
+    int menor = 0, tmp;
 
     for (int i = 0; i < 10; i++){
         printf("Insira o numero: ");
@@ -330,17 +355,17 @@ void e12(){
         tmp = y[menor];
 
         y[menor] = y[j];
-        y[j] = y[menor];
+        y[j] = tmp;
     }
 
     printf("Lista = [");
-    for (int l = 0; l < 10; l++){
-        printf("%d, ", v[l]);
+    for (int l = 0; l < 20; l++){
+        printf("%d, ", y[l]);
     }
     printf("].\n");
 }
 
-void e13(){
+void e13(){ //Correto
     int v[10], maior = 0, tmp;
 
     for (int i = 0; i < 10; i++){
@@ -358,7 +383,7 @@ void e13(){
         tmp = v[maior];
 
         v[maior] = v[j];
-        v[j] = v[maior];
+        v[j] = tmp;
     }
 
     printf("Lista = [");
