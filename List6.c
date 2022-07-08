@@ -60,7 +60,7 @@ void ex3(){
 
     for (int i = 0; i < 25; i++){
         menor = i;
-        for (int j = 0+i; j < 25; j++){
+        for (int j = i; j < 25; j++){
             if (MC[j] < MC[menor]){
                 menor = j;
             }
