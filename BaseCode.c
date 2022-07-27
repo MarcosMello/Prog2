@@ -12,7 +12,7 @@ int main(){
     for (int i = 0; i < 2; i++){
         for (int j = 0; j < 2; j++){
             printf("Insira o valor da posicao %d %d: ", i, j);
-            scanf("%d", M[i][j]);
+            scanf("%d", &M[i][j]);
         }
     }
 
@@ -35,7 +35,7 @@ int main(){
 
         if (menor[0] != (i/2) && menor[1] != (i - (2 * (i/2)))){
             aux = *(*(M + menor[0]) + menor[1]);
-            *(*(M + menor[0]) + menor[1]) = *(*(M + (i/2)) + (i - (2 * (i/2))));
+            *(*(M + menor[0]) + menor[1]) = *(*(M + (i/2)) + (i - (2 * (i/2)))); //M[menor[0]][menor[1]]
             *(*(M + (i/2)) + (i - (2 * (i/2)))) = aux;
         }
     }
