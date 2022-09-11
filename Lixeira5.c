@@ -54,20 +54,20 @@ float **Aloca(int m, int n){
 }
 
 int main(){
-    float **mat = Aloca(10, 20);
+    float **mat = Aloca(3, 3);
 
-    for (int i = 0; i < 10; i++){
-        for (int j = 0; j < 20; j++){
+    for (int i = 0; i < 3; i++){
+        for (int j = 0; j < 3; j++){
             printf("Insira o numero: ");
             scanf("%f", (*(mat + i) + j));
         }
     }
 
-    int Lmaior = maiorL(mat, 10, 20);
-    float Cmenor = menorC(mat, Lmaior, 20);
+    int Lmaior = maiorL(mat, 3, 3);
+    float Cmenor = menorC(mat, Lmaior, 3);
     printf("Minimax: %.2f", Cmenor);
 
-    imprimeM(mat, 10, 20);
+    imprimeM(mat, 3, 3);
 
     return 0;
 }
